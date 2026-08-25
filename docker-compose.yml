@@ -1,0 +1,15 @@
+services:
+  agentguard:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      AGENTGUARD_PROVIDER: deterministic-local
+      AGENTGUARD_DATABASE_URL: sqlite:////app/runtime/agentguard.db
+    volumes:
+      - agentguard-data:/app/runtime
+    restart: unless-stopped
+
+volumes:
+  agentguard-data:
+

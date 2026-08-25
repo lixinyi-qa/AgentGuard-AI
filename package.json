@@ -1,0 +1,2 @@
+{"name":"agentguard-ai-api-tests","private":true,"scripts":{"test:postman":"newman run postman/AgentGuard-AI.postman_collection.json -e postman/AgentGuard-AI.postman_environment.json --reporters cli,junit --reporter-junit-export reports/newman.xml"},"devDependencies":{"newman":"^6.2.1"}}
+

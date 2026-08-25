@@ -1,0 +1,27 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.env
+*.db
+*.sqlite*
+node_modules/
+test-results/
+playwright-report/
+reports/*.xml
+reports/locust_*.csv
+reports/npm-audit.json
+*.log
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Keep the small, reviewed evidence artifacts below.
+!reports/evaluation-latest.json
+!reports/evaluation-latest.html
+!reports/performance-baseline.json
+!reports/fault-matrix.json
