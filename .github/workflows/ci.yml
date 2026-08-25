@@ -1,0 +1,57 @@
+name: quality-gate
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test-and-evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install Python dependencies
+        run: pip install -e ".[dev]"
+      - name: Install Chromium
+        run: python -m playwright install --with-deps chromium
+      - name: Unit and API tests
+        run: pytest tests/test_unit.py tests/test_api.py --cov=app --cov-report=xml:reports/coverage.xml --cov-report=html:reports/htmlcov --junitxml=reports/pytest.xml
+      - name: Playwright UI tests
+        run: pytest tests/test_ui.py -m ui --junitxml=reports/playwright.xml
+      - name: Install Newman
+        run: npm ci
+      - name: Start API for Newman
+        run: uvicorn app.main:app --host 127.0.0.1 --port 8000 > reports/uvicorn.log 2>&1 &
+      - name: Wait for API
+        run: |
+          for i in {1..40}; do
+            if curl --fail --silent http://127.0.0.1:8000/health >/dev/null; then exit 0; fi
+            sleep 0.25
+          done
+          exit 1
+      - name: Newman API workflow
+        run: npm run test:postman
+      - name: AI evaluation quality gate
+        run: python scripts/run_quality_gate.py
+      - name: Fault matrix
+        run: python scripts/run_fault_matrix.py
+      - name: Local performance smoke baseline
+        run: python scripts/performance_baseline.py
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: agentguard-quality-evidence
+          path: |
+            reports/
+            docs/defects/
+          if-no-files-found: warn
