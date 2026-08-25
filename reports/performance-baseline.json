@@ -1,0 +1,35 @@
+{
+  "scope": "Local sequential TestClient baseline; not production capacity",
+  "generated_at": "2026-08-25T09:51:50.678032+00:00",
+  "environment": {
+    "python": "3.13.5",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "iterations_per_endpoint": 100
+  },
+  "endpoints": {
+    "agent_read_only": {
+      "requests": 100,
+      "failures": 0,
+      "p50_ms": 11.72,
+      "p95_ms": 14.9,
+      "mean_ms": 12.18,
+      "requests_per_second_sequential": 82.07
+    },
+    "trace_history": {
+      "requests": 100,
+      "failures": 0,
+      "p50_ms": 12.47,
+      "p95_ms": 16.72,
+      "mean_ms": 12.55,
+      "requests_per_second_sequential": 79.71
+    },
+    "evaluation_history": {
+      "requests": 100,
+      "failures": 0,
+      "p50_ms": 8.27,
+      "p95_ms": 11.03,
+      "mean_ms": 8.35,
+      "requests_per_second_sequential": 119.71
+    }
+  }
+}

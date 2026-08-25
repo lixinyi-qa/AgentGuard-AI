@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AgentGuard AI 虚构智能体质量保障平台">
+  <title>AgentGuard AI · Quality Console</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">AG</span><div><strong>AgentGuard AI</strong><small>Digital-Twin Quality Assurance</small></div></div>
+    <div class="sandbox-badge"><span aria-hidden="true">◆</span> 虚构沙箱 · 不连接真实金融系统</div>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div><p class="eyebrow">AI AGENT QUALITY ENGINEERING</p><h1 id="hero-title">让每次工具决策都有证据可查</h1><p>用可执行策略、故障注入、Trace Replay 和版本化评测，验证虚构银行与企业服务智能体的安全边界。</p></div>
+      <div class="gate-panel"><span>当前 Quality Gate</span><strong id="gate-status" data-state="unknown">尚未评测</strong><small id="gate-detail">运行 40 条版本化案例后生成结论</small></div>
+    </section>
+
+    <section class="metrics" aria-label="质量指标">
+      <article><span>Task Success Rate</span><strong id="metric-task">—</strong><small>确定性断言</small></article>
+      <article><span>Tool Accuracy</span><strong id="metric-tool">—</strong><small>选择与参数</small></article>
+      <article><span>Injection Block</span><strong id="metric-injection">—</strong><small>直接 + 间接</small></article>
+      <article><span>PII Leak Count</span><strong id="metric-pii">—</strong><small>硬门禁 = 0</small></article>
+      <article><span>Fault Recovery</span><strong id="metric-fault">—</strong><small>安全恢复/失败</small></article>
+      <article><span>P95 Latency</span><strong id="metric-p95">—</strong><small>本机离线评测</small></article>
+    </section>
+
+    <div id="global-message" class="message" role="status" aria-live="polite">正在连接本地 API…</div>
+
+    <section class="workspace">
+      <article class="panel console-panel">
+        <div class="panel-heading"><div><p class="eyebrow">AGENT RUNTIME</p><h2>智能体调试台</h2></div><span id="api-status" class="status-chip">检查中</span></div>
+        <form id="agent-form">
+          <div class="form-grid">
+            <label>用户角色<select id="user-role"><option value="customer">customer</option><option value="anonymous">anonymous</option><option value="customer_service">customer_service</option><option value="auditor">auditor</option><option value="administrator">administrator</option></select></label>
+            <label>Actor ID<input id="actor-id" value="CUST-001" autocomplete="off"></label>
+            <label>目标对象<input id="target-object" value="ACC-001" autocomplete="off"></label>
+            <label class="check-label"><input id="second-factor" type="checkbox"> 已完成二次确认</label>
+          </div>
+          <label>用户请求<textarea id="user-input" rows="4">查询我的虚构账户 ACC-001 余额</textarea></label>
+          <div class="actions"><button class="primary" id="run-agent" type="submit">执行并记录 Trace</button><button class="secondary" id="try-unauthorized" type="button">填入越权示例</button></div>
+        </form>
+        <div id="agent-result" class="result empty-state">尚未执行。结果、拒绝原因和引用将在这里显示。</div>
+      </article>
+
+      <article class="panel fault-panel">
+        <div class="panel-heading"><div><p class="eyebrow">CHAOS CONTROL</p><h2>故障注入</h2></div><span class="status-chip neutral">15 类故障</span></div>
+        <form id="fault-form">
+          <label>目标工具<select id="fault-tool"><option>query_account</option><option>query_transaction</option><option>search_policy</option><option>update_contact</option><option>create_refund</option><option>create_ticket</option><option>request_human_approval</option></select></label>
+          <label>故障类型<select id="fault-type"><option value="timeout">timeout</option><option value="http_500">HTTP 500</option><option value="http_429">HTTP 429</option><option value="empty_response">empty_response</option><option value="missing_field">missing_field</option><option value="wrong_field_type">wrong_field_type</option><option value="malicious_tool_output">malicious_tool_output</option><option value="indirect_prompt_injection">indirect_prompt_injection</option><option value="partial_success">partial_success</option></select></label>
+          <label>触发次数<input id="fault-count" type="number" min="1" max="20" value="1"></label>
+          <button class="secondary" type="submit">启用故障</button>
+        </form>
+        <div id="fault-list" class="compact-list empty-state">当前没有启用的故障。</div>
+      </article>
+    </section>
+
+    <section class="panel evidence-panel">
+      <div class="panel-heading"><div><p class="eyebrow">AUDIT EVIDENCE</p><h2>工具时间线与 Policy 决策</h2></div><button id="replay-trace" class="secondary" type="button" disabled>离线重放当前 Trace</button></div>
+      <div class="evidence-grid"><div><h3>工具调用时间线</h3><ol id="tool-timeline" class="timeline"><li class="empty-state">等待一次智能体运行。</li></ol></div><div><h3>Policy 允许 / 阻止记录</h3><div id="policy-log" class="policy-log empty-state">暂无策略证据。</div></div></div>
+      <details id="trace-details"><summary>查看 Trace 详情</summary><pre id="trace-json">尚无 Trace。</pre></details>
+    </section>
+
+    <section class="evaluation-layout">
+      <article class="panel">
+        <div class="panel-heading"><div><p class="eyebrow">EVALUATION</p><h2>40 条完整评测</h2></div><button id="run-evaluation" class="primary" type="button">运行评测</button></div>
+        <p>覆盖正常任务、越权、审批、提示词注入、PII、故障恢复、幂等与安全拒绝。</p>
+        <div id="evaluation-progress" class="result empty-state">尚无本次运行。</div>
+        <div class="report-actions"><a id="report-json" class="text-link disabled" href="#">导出 JSON</a><a id="report-html" class="text-link disabled" href="#">导出 HTML</a></div>
+      </article>
+      <article class="panel">
+        <div class="panel-heading"><div><p class="eyebrow">REGRESSION</p><h2>两个版本对比</h2></div><button id="compare-runs" class="secondary" type="button">比较最近两次</button></div>
+        <div id="comparison-result" class="result empty-state">至少运行两次评测后可比较新增失败、恢复案例、延迟与风险变化。</div>
+      </article>
+    </section>
+
+    <section class="panel history-panel">
+      <div class="panel-heading"><div><p class="eyebrow">RUN HISTORY</p><h2>运行历史与失败案例</h2></div><button id="refresh-history" class="secondary" type="button">刷新</button></div>
+      <div class="table-wrap"><table><thead><tr><th>Run ID</th><th>时间</th><th>Gate</th><th>通过</th><th>失败案例</th><th>操作</th></tr></thead><tbody id="run-history"><tr><td colspan="6" class="empty-state">暂无评测运行。</td></tr></tbody></table></div>
+    </section>
+  </main>
+  <footer>AgentGuard AI · 所有银行、客户、账户与交易均为虚构测试数据 · 非生产系统与合规认证</footer>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
+

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+<title id="title">AgentGuard AI architecture</title><desc id="desc">Request flows through runtime, retrieval, policy, sandbox and fault engine to tracing, evaluation, replay, quality gate, reports and dashboard.</desc>
+<rect width="1200" height="520" fill="#f3f7f9"/><style>.b{fill:#fff;stroke:#0f8f83;stroke-width:2}.d{fill:#0d2942;stroke:#0d2942}.t{font:600 17px system-ui;fill:#14324b}.w{font:600 17px system-ui;fill:white}.s{font:13px system-ui;fill:#5d7285}.a{stroke:#14324b;stroke-width:2;marker-end:url(#m)}</style><defs><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#14324b"/></marker></defs>
+<rect class="d" x="35" y="195" rx="12" width="150" height="85"/><text class="w" x="110" y="230" text-anchor="middle">User / Dashboard</text><text class="w" x="110" y="255" text-anchor="middle">FastAPI</text>
+<rect class="b" x="245" y="195" rx="12" width="165" height="85"/><text class="t" x="327" y="230" text-anchor="middle">Agent Runtime</text><text class="s" x="327" y="255" text-anchor="middle">Deterministic / OpenAI</text>
+<rect class="b" x="470" y="55" rx="12" width="170" height="80"/><text class="t" x="555" y="88" text-anchor="middle">Knowledge / RAG</text><text class="s" x="555" y="112" text-anchor="middle">含恶意回归文档</text>
+<rect class="b" x="470" y="175" rx="12" width="170" height="80"/><text class="t" x="555" y="208" text-anchor="middle">Policy Engine</text><text class="s" x="555" y="232" text-anchor="middle">Role + Object + Risk</text>
+<rect class="b" x="470" y="295" rx="12" width="170" height="80"/><text class="t" x="555" y="328" text-anchor="middle">Tool Sandbox</text><text class="s" x="555" y="352" text-anchor="middle">7 个虚构工具</text>
+<rect class="b" x="700" y="295" rx="12" width="170" height="80"/><text class="t" x="785" y="328" text-anchor="middle">Fault Injection</text><text class="s" x="785" y="352" text-anchor="middle">15 类主动异常</text>
+<rect class="d" x="700" y="175" rx="12" width="170" height="80"/><text class="w" x="785" y="208" text-anchor="middle">Trace Store</text><text class="w" x="785" y="232" text-anchor="middle">SQLite / Audit</text>
+<rect class="b" x="930" y="55" rx="12" width="210" height="80"/><text class="t" x="1035" y="88" text-anchor="middle">Replay / Compare</text><text class="s" x="1035" y="112" text-anchor="middle">写操作离线重放</text>
+<rect class="b" x="930" y="175" rx="12" width="210" height="80"/><text class="t" x="1035" y="208" text-anchor="middle">Evaluation Engine</text><text class="s" x="1035" y="232" text-anchor="middle">40 cases / 18 metrics</text>
+<rect class="d" x="930" y="295" rx="12" width="210" height="80"/><text class="w" x="1035" y="328" text-anchor="middle">Quality Gate</text><text class="w" x="1035" y="352" text-anchor="middle">Reports + CI</text>
+<line class="a" x1="185" y1="238" x2="245" y2="238"/><line class="a" x1="410" y1="220" x2="470" y2="95"/><line class="a" x1="410" y1="230" x2="470" y2="215"/><line class="a" x1="410" y1="245" x2="470" y2="335"/><line class="a" x1="640" y1="335" x2="700" y2="335"/><line class="a" x1="640" y1="215" x2="700" y2="215"/><line class="a" x1="870" y1="215" x2="930" y2="95"/><line class="a" x1="870" y1="215" x2="930" y2="215"/><line class="a" x1="870" y1="235" x2="930" y2="335"/>
+<text class="s" x="600" y="460" text-anchor="middle">所有客户、账户、交易、政策与审批均为虚构数据；默认模式完全离线。</text>
+</svg>
+

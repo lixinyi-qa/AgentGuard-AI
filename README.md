@@ -172,8 +172,8 @@ reports/             小型可审计运行结果；临时 XML/CSV 默认忽略
 
 ## 已知限制
 
-详见 [需求与边界](docs/requirements.md) 和 [威胁模型](docs/threat-model.md)。本次没有验证 Docker；没有连接真实模型、PostgreSQL 或云端 GitHub Actions；没有进行外部安全认证、分布式并发或真实金融合规评审。仓库尚未创建或推送。
+详见 [需求与边界](docs/requirements.md) 和 [威胁模型](docs/threat-model.md)。本次没有验证 Docker；没有连接真实模型或 PostgreSQL；没有进行外部安全认证、分布式并发或真实金融合规评审。本地验收结果与云端 GitHub Actions 结果应分别核验，不能互相替代。
 
 ## GitHub 发布状态
 
-建议仓库：`lixinyi-qa/AgentGuard-AI`，建议设为 Public。当前目录只做了本地 Git 初始化，**没有创建 Commit、没有配置或冒用用户身份、没有创建远端仓库、没有推送**。正式公开前需项目所有者最终确认，并建议使用 GitHub noreply 邮箱。
+公开仓库：[`lixinyi-qa/AgentGuard-AI`](https://github.com/lixinyi-qa/AgentGuard-AI)。项目所有者已确认公开发布；提交通过 GitHub 账号完成，不在仓库内容中暴露私人邮箱、密码、Token 或 API Key。
